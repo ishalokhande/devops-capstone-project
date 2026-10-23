@@ -42,6 +42,7 @@ jobs:
           python -m pip install --upgrade pip
           pip install -r requirements.txt
           pip install "setuptools<81"
+          pip install Flask-Talisman Flask-Cors
 
       - name: Run Flake8
         run: flake8 service tests --extend-ignore=E501
