@@ -29,5 +29,5 @@ jobs:
 
       - name: Run tests
         run: |
-          pip install "setuptools<81"
-          nosetests -v --with-spec --spec-color
+          pip install nose2
+          nose2 -v
