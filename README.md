@@ -1,80 +1,85 @@
-# DevOps Capstone Template
+
+# devops-capstone-project
+
+A Customer Accounts microservice project using Python, Flask, and REST APIs. The project includes account management, test-driven development, automated testing, continuous integration, security, Docker containerization, Kubernetes deployment, and continuous delivery.
 
 [![License](https://img.shields.io/badge/License-Apache%202.0-blue.svg)](https://opensource.org/licenses/Apache-2.0)
 [![Python 3.9](https://img.shields.io/badge/Python-3.9-green.svg)](https://shields.io/)
 
-This repository contains the starter code for the project in [**IBM-CD0285EN-SkillsNetwork DevOps Capstone Project**](https://www.coursera.org/learn/devops-capstone-project?specialization=devops-and-software-engineering) which is part of the [**IBM DevOps and Software Engineering Professional Certificate**](https://www.coursera.org/professional-certificates/devops-and-software-engineering)
+This repository contains the starter code for the project in [**IBM-CD0285EN-SkillsNetwork DevOps Capstone Project**](https://www.coursera.org/learn/devops-capstone-project?specialization=devops-and-software-engineering), which is part of the [**IBM DevOps and Software Engineering Professional Certificate**](https://www.coursera.org/professional-certificates/devops-and-software-engineering).
 
 ## Usage
 
-You should use this template to start your DevOps Capstone project. It contains all of the code that you will need to get started.
+Use this repository as the starting point for your DevOps Capstone project. It contains the code needed to develop the Customer Accounts microservice.
 
-Do Not fork this code! It is meant to be used by pressing the  <span style=color:white;background:green>**Use this Template**</span> button in GitHub. This will copy the code to your own repository with no connection back to the original repository like a fork would. This is what you want.
+Do not fork the original repository. Create your own repository using GitHub's **Use this template** button. This copies the starter code into your repository without creating a fork relationship.
 
 ## Development Environment
 
-These labs are designed to be executed in the IBM Developer Skills Network Cloud IDE with OpenShift. Please use the links provided in the Coursera Capstone project to access the lab environment.
+These labs are designed to be executed in the IBM Developer Skills Network Cloud IDE with OpenShift. Use the links provided in the Coursera Capstone project to access the lab environment.
 
-Once you are in the lab environment, you can initialize it with `bin/setup.sh` by sourcing it. (*Note: DO NOT run this program as a bash script. It sets environment variable and so must be sourced*):
+Initialize the environment by sourcing `bin/setup.sh`. Do not run it as a standalone Bash script because it sets environment variables.
 
 ```bash
 source bin/setup.sh
 ```
 
-This will install Python 3.9, make it the default, modify the bash prompt, create a Python virtual environment and activate it.
+This installs Python 3.9, makes it the default Python version, modifies the terminal prompt, creates a Python virtual environment, and activates it.
 
-After sourcing it you prompt should look like this:
+After setup, your prompt should look similar to:
 
 ```bash
 (venv) theia:project$
 ```
 
-## Useful commands
+## Useful Commands
 
-Under normal circumstances you should not have to run these commands. They are performed automatically at setup but may be useful when things go wrong:
+These commands are normally performed automatically during setup but may be useful if something goes wrong.
 
-### Activate the Python 3.9 virtual environment
-
-You can activate the Python 3.9 environment with:
+### Activate the Python 3.9 Virtual Environment
 
 ```bash
 source ~/venv/bin/activate
 ```
 
-### Installing Python dependencies
+### Install Python Dependencies
 
-These dependencies are installed as part of the setup process but should you need to install them again, first make sure that the Python 3.9 virtual environment is activated and then use the `make install` command:
+Make sure the Python virtual environment is activated, then run:
 
 ```bash
 make install
 ```
 
-### Starting the Postgres Docker container
+### Start the PostgreSQL Docker Container
 
-The labs use Postgres running in a Docker container. If for some reason the service is not available you can start it with:
+If the PostgreSQL service is unavailable, run:
 
 ```bash
 make db
 ```
 
-You can use the `docker ps` command to make sure that postgres is up and running.
+Check whether PostgreSQL is running:
 
-## Project layout
+```bash
+docker ps
+```
 
-The code for the microservice is contained in the `service` package. All of the test are in the `tests` folder. The code follows the **Model-View-Controller** pattern with all of the database code and business logic in the model (`models.py`), and all of the RESTful routing on the controller (`routes.py`).
+## Project Layout
+
+The microservice code is contained in the `service` package. Tests are located in the `tests` folder. The code follows the Model-View-Controller pattern, with database code and business logic in `models.py` and REST API routing in `routes.py`.
 
 ```text
-├── service         <- microservice package
-│   ├── common/     <- common log and error handlers
-│   ├── config.py   <- Flask configuration object
-│   ├── models.py   <- code for the persistent model
-│   └── routes.py   <- code for the REST API routes
-├── setup.cfg       <- tools setup config
-└── tests                       <- folder for all of the tests
-    ├── factories.py            <- test factories
-    ├── test_cli_commands.py    <- CLI tests
-    ├── test_models.py          <- model unit tests
-    └── test_routes.py          <- route unit tests
+├── service
+│   ├── common/
+│   ├── config.py
+│   ├── models.py
+│   └── routes.py
+├── setup.cfg
+└── tests
+    ├── factories.py
+    ├── test_cli_commands.py
+    ├── test_models.py
+    └── test_routes.py
 ```
 
 ## Data Model
@@ -82,8 +87,8 @@ The code for the microservice is contained in the `service` package. All of the 
 The Account model contains the following fields:
 
 | Name | Type | Optional |
-|------|------|----------|
-| id | Integer| False |
+|---|---|---|
+| id | Integer | False |
 | name | String(64) | False |
 | email | String(64) | False |
 | address | String(256) | False |
@@ -92,42 +97,44 @@ The Account model contains the following fields:
 
 ## Your Task
 
-Complete this microservice by implementing REST API's for `READ`, `UPDATE`, `DELETE`, and `LIST` while maintaining **95%** code coverage. In true **Test Driven Development** fashion, first write tests for the code you "wish you had", and then write the code to make them pass.
+Complete the Customer Accounts microservice by implementing the REST APIs for `READ`, `UPDATE`, `DELETE`, and `LIST`, while maintaining **95% code coverage**.
+
+Follow Test-Driven Development (TDD): first write tests for the functionality you want, then implement the code required to make those tests pass.
+
+The project will also include automated testing, continuous integration, security headers, CORS policies, Docker containerization, Kubernetes deployment, and an automated continuous delivery pipeline.
 
 ## Local Kubernetes Development
 
-This repo can also be used for local Kubernetes development. It is not advised that you run these commands in the Cloud IDE environment. The purpose of these commands are to simulate the Cloud IDE environment locally on your computer. 
+This repository can also be used for local Kubernetes development. The following commands are intended to simulate the Cloud IDE environment locally and are not recommended for execution in the Cloud IDE.
 
-At a minimum, you will need [Docker Desktop](https://www.docker.com/products/docker-desktop) installed on your computer. For the full development environment, you will also need [Visual Studio Code](https://code.visualstudio.com) with the [Remote Containers](https://marketplace.visualstudio.com/items?itemName=ms-vscode-remote.remote-containers) extension from the Visual Studio Marketplace. All of these can be installed manually by clicking on the links above or you can use a package manager like **Homebrew** on Mac of **Chocolatey** on Windows.
+At a minimum, install [Docker Desktop](https://www.docker.com/products/docker-desktop). For the full development environment, install [Visual Studio Code](https://code.visualstudio.com) and the [Remote Containers extension](https://marketplace.visualstudio.com/items?itemName=ms-vscode-remote.remote-containers).
 
-Please only use these commands for working stand-alone on your own computer with the VSCode Remote Container environment provided.
+### 1. Start a Local K3D Kubernetes Cluster
 
-1. Bring up a local K3D Kubernetes cluster
+```bash
+make cluster
+```
 
-    ```bash
-    $ make cluster
-    ```
+### 2. Install Tekton
 
-2. Install Tekton
+```bash
+make tekton
+```
 
-    ```bash
-    $ make tekton
-    ```
+### 3. Install the ClusterTasks
 
-3. Install the ClusterTasks that the Cloud IDE has
+```bash
+make clustertasks
+```
 
-    ```bash
-    $ make clustertasks
-    ```
-
-You can now perform Tekton development locally, just like in the Cloud IDE lab environment.
+These commands prepare a local environment for Tekton development.
 
 ## Author
 
-[John Rofrano](https://www.coursera.org/instructor/johnrofrano), Senior Technical Staff Member, DevOps Champion, @ IBM Research, and Instructor @ Coursera
+[John Rofrano](https://www.coursera.org/instructor/johnrofrano), Senior Technical Staff Member, DevOps Champion, IBM Research, and Coursera instructor.
 
 ## License
 
-Licensed under the Apache License. See [LICENSE](LICENSE)
+Licensed under the Apache License. See [LICENSE](LICENSE).
 
-## <h3 align="center"> © IBM Corporation 2022. All rights reserved. <h3/>
+<h3 align="center">© IBM Corporation 2022. All rights reserved.</h3>
