@@ -1,4 +1,4 @@
-# Pin dependancies that might cause breakage
+# Pin dependencies that might cause breakage
 Werkzeug==2.1.2
 SQLAlchemy==1.4.46
 
@@ -27,3 +27,7 @@ coverage==6.3.2
 
 # Utilities
 httpie==3.2.1
+
+# Security and CORS
+Flask-Talisman
+Flask-Cors
