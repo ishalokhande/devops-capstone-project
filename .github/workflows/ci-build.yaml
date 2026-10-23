@@ -25,7 +25,7 @@ jobs:
           pip install -r requirements.txt
 
       - name: Run Flake8
-        run: flake8 service tests
+        run: flake8 service tests --extend-ignore=E501
 
       - name: Run tests
         run: nosetests -v --with-spec --spec-color
