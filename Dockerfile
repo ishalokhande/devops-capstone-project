@@ -1,16 +1,15 @@
-
-FROM python:3.10-slim
+FROM python:3.9-slim
 
 WORKDIR /app
 
 COPY requirements.txt .
-
 RUN pip install --no-cache-dir -r requirements.txt
 
-COPY . .
+COPY service/ ./service/
 
-ENV PORT=8080
+RUN useradd --create-home theia && chown -R theia:theia /app
+USER theia
 
 EXPOSE 8080
 
-CMD ["gunicorn", "--bind", "0.0.0.0:8080", "service:app"]
+CMD ["gunicorn", "--bind=0.0.0.0:8080", "--log-level=info", "service:app"]
